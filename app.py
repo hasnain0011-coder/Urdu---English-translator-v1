@@ -34,10 +34,10 @@ def record_urdu_audio(filename="urdu_audio.wav", duration=7):
         audio_segment = audio_segment.normalize()
         audio_segment.export(filename, format="wav")
 
-        print(f"✅ Saved to {os.path.abspath(filename)}")
+        print(f" Saved to {os.path.abspath(filename)}")
         return True
     except Exception as e:
-        print(f"❌ Recording failed: {e}")
+        print(f" Recording failed: {e}")
         return False
 
 
@@ -63,7 +63,7 @@ def load_models():
 
         return models
     except Exception as e:
-        print(f"❌ Model loading failed: {e}")
+        print(f" Model loading failed: {e}")
         raise
 
 
@@ -96,7 +96,7 @@ def transcribe_urdu(audio_path):
 
         return text
     except Exception as e:
-        print(f"❌ Transcription failed: {e}")
+        print(f" Transcription failed: {e}")
         return None
 
 
@@ -125,7 +125,7 @@ def translate_urdu(urdu_text):
 
         return english
     except Exception as e:
-        print(f"❌ Translation failed: {e}")
+        print(f" Translation failed: {e}")
         return None
 
 
@@ -140,17 +140,17 @@ def main():
     urdu_text = transcribe_urdu("urdu_audio.wav")
     if not urdu_text:
         return
-    print(f"📝 Urdu: {urdu_text}")
+    print(f" Urdu: {urdu_text}")
 
     # 3. Translate
-    print("\n🌍 Translating...")
+    print("\n Translating...")
     english_text = translate_urdu(urdu_text)
     if not english_text:
         return
-    print(f"✅ English: {english_text}")
+    print(f" English: {english_text}")
 
     # 4. Speak
-    print("\n🔊 Speaking...")
+    print("\n Speaking...")
     models['tts'].say(english_text)
     models['tts'].runAndWait()
 
@@ -159,4 +159,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
